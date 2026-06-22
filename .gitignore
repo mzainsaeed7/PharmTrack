@@ -17,3 +17,6 @@ local.properties
 # Exclude all markdown files except README
 *.md
 !README.md
+
+# Kotlin compiler sessions
+.kotlin/

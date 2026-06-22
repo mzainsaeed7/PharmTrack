@@ -2,6 +2,12 @@
 > **Offline-First Clinic & Dispensary Medicine Inventory Manager**  
 > *Android Application built with Kotlin, Jetpack libraries, MVVM + Clean Architecture, and Room (SQLite).*
 
+<p align="left">
+  <a href="release/PharmTrack.apk">
+    <img src="https://img.shields.io/badge/Download-PharmTrack%20APK-blue?style=for-the-badge&logo=android&logoColor=white&color=1565C0" alt="Download APK" />
+  </a>
+</p>
+
 ---
 
 ## 📋 Problem & Solution
@@ -56,6 +62,47 @@ This application is built according to **Clean Architecture** and **MVVM** desig
 ### 5. Audit History Log
 - Transaction ledger grouped and filtered by *Today*, *This Week*, *This Month*, or *All time*.
 - Bottom Navigation badge indicators updating in real-time.
+
+---
+
+## 📸 App Screenshots
+
+<table style="width: 100%; border-collapse: collapse; border: none;">
+  <tr>
+    <td style="width: 33%; text-align: center; border: none; padding: 12px;">
+      <b>📊 Premium Dashboard</b><br/>
+      <i>Featuring dynamic stock distribution donut chart and urgent alerts</i><br/><br/>
+      <img src="Screenshots/dashboard.jpg" width="100%" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+    </td>
+    <td style="width: 33%; text-align: center; border: none; padding: 12px;">
+      <b>💊 Medicine Catalog</b><br/>
+      <i>Search, filter chips, and swipe actions</i><br/><br/>
+      <img src="Screenshots/medicine-list.jpg" width="100%" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+    </td>
+    <td style="width: 33%; text-align: center; border: none; padding: 12px;">
+      <b>ℹ️ Medicine Details</b><br/>
+      <i>Progress indicators, safety levels, and statistics</i><br/><br/>
+      <img src="Screenshots/medicine-details.jpg" width="100%" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 33%; text-align: center; border: none; padding: 12px;">
+      <b>🔄 Stock Movements</b><br/>
+      <i>Quick bottom-sheets for adjustments</i><br/><br/>
+      <img src="Screenshots/medicine-detail-2.jpg" width="100%" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+    </td>
+    <td style="width: 33%; text-align: center; border: none; padding: 12px;">
+      <b>⚠️ Alerts & Expiry Tabs</b><br/>
+      <i>Separated low stock, expiring, and expired products</i><br/><br/>
+      <img src="Screenshots/alert.jpg" width="100%" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+    </td>
+    <td style="width: 33%; text-align: center; border: none; padding: 12px;">
+      <b>📜 Audit Log History</b><br/>
+      <i>Complete time-filtered transaction journal</i><br/><br/>
+      <img src="Screenshots/history.jpg" width="100%" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+    </td>
+  </tr>
+</table>
 
 ---
 
