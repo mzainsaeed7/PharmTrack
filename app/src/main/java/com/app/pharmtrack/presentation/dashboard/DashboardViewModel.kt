@@ -2,7 +2,9 @@ package com.app.pharmtrack.presentation.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.app.pharmtrack.domain.model.ExpiryStatus
 import com.app.pharmtrack.domain.model.Medicine
+import com.app.pharmtrack.domain.model.StockStatus
 import com.app.pharmtrack.domain.model.StockTransaction
 import com.app.pharmtrack.domain.repository.MedicineRepository
 import com.app.pharmtrack.domain.repository.TransactionRepository
@@ -18,7 +20,8 @@ data class DashboardUiState(
     val totalStockValue: Double = 0.0,
     val totalStockValueFormatted: String = "PKR 0",
     val urgentAlerts: List<Medicine> = emptyList(),
-    val recentTransactions: List<StockTransaction> = emptyList()
+    val recentTransactions: List<StockTransaction> = emptyList(),
+    val stockStatusDistribution: Map<String, Int> = emptyMap()
 )
 
 @HiltViewModel
@@ -28,24 +31,30 @@ class DashboardViewModel @Inject constructor(
 ) : ViewModel() {
 
     val uiState: StateFlow<DashboardUiState> = combine(
-        medicineRepository.getTotalMedicineCount(),
-        medicineRepository.getLowStockCount(),
-        medicineRepository.getExpiringSoonCount(),
+        medicineRepository.getAllMedicines(),
         medicineRepository.getTotalStockValue(),
-        medicineRepository.getLowStockMedicines(),
-        medicineRepository.getExpiringSoonMedicines(),
         transactionRepository.getRecentTransactions(5)
-    ) { array ->
-        val total = array[0] as Int
-        val lowStock = array[1] as Int
-        val expiringSoon = array[2] as Int
-        val stockValue = array[3] as? Double
-        @Suppress("UNCHECKED_CAST")
-        val lowStockMeds = array[4] as List<Medicine>
-        @Suppress("UNCHECKED_CAST")
-        val expiringMeds = array[5] as List<Medicine>
-        @Suppress("UNCHECKED_CAST")
-        val recentTransactions = array[6] as List<StockTransaction>
+    ) { allMeds, stockValue, recentTransactions ->
+        
+        val total = allMeds.size
+        
+        // Count low stock: current_stock <= reorder_level
+        val lowStock = allMeds.count { it.currentStock <= it.reorderLevel }
+        
+        // Count expiring soon: warning or critical (excluding expired or no date)
+        val expiringSoon = allMeds.count { 
+            it.expiryStatus == ExpiryStatus.WARNING || 
+            it.expiryStatus == ExpiryStatus.CRITICAL 
+        }
+
+        // Low stock list
+        val lowStockMeds = allMeds.filter { it.currentStock <= it.reorderLevel }
+        // Expiring list
+        val expiringMeds = allMeds.filter { 
+            it.expiryStatus == ExpiryStatus.WARNING || 
+            it.expiryStatus == ExpiryStatus.CRITICAL ||
+            it.expiryStatus == ExpiryStatus.EXPIRED
+        }
 
         // Urgent Alerts: Union of low stock and expiring soon medicines, sorted by stock urgency first
         val alerts = (lowStockMeds + expiringMeds)
@@ -56,6 +65,19 @@ class DashboardViewModel @Inject constructor(
             )
             .take(5)
 
+        // Stock status distribution
+        val safeCount = allMeds.count { it.stockStatus == StockStatus.SAFE }
+        val lowCount = allMeds.count { it.stockStatus == StockStatus.LOW }
+        val criticalCount = allMeds.count { it.stockStatus == StockStatus.CRITICAL_LOW }
+        val outOfStockCount = allMeds.count { it.stockStatus == StockStatus.OUT_OF_STOCK }
+
+        val distribution = mapOf(
+            "Safe" to safeCount,
+            "Low" to lowCount,
+            "Critical" to criticalCount,
+            "Out of Stock" to outOfStockCount
+        )
+
         DashboardUiState(
             totalMedicines = total,
             lowStockCount = lowStock,
@@ -63,7 +85,8 @@ class DashboardViewModel @Inject constructor(
             totalStockValue = stockValue ?: 0.0,
             totalStockValueFormatted = StockStatusHelper.formatStockValue(stockValue),
             urgentAlerts = alerts,
-            recentTransactions = recentTransactions
+            recentTransactions = recentTransactions,
+            stockStatusDistribution = distribution
         )
     }.stateIn(
         scope = viewModelScope,

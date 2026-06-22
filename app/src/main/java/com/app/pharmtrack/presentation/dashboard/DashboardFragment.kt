@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -11,11 +12,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.app.pharmtrack.R
 import com.app.pharmtrack.databinding.FragmentDashboardBinding
 import com.app.pharmtrack.presentation.medicines.list.MedicineAdapter
 import com.app.pharmtrack.presentation.transactions.TransactionAdapter
 import com.app.pharmtrack.utils.DateUtils
 import com.app.pharmtrack.utils.visibleIf
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -43,6 +49,7 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         
         setupRecyclerViews()
+        setupPieChart()
         observeViewModel()
     }
 
@@ -64,6 +71,66 @@ class DashboardFragment : Fragment() {
         }
     }
 
+    private fun setupPieChart() {
+        binding.pieChart.apply {
+            setUsePercentValues(true)
+            description.isEnabled = false
+            isDrawHoleEnabled = true
+            setHoleColor(android.R.color.transparent)
+            setTransparentCircleColor(android.R.color.transparent)
+            setDrawEntryLabels(false) // Hide labels on the chart slices
+            legend.isEnabled = true
+            legend.textColor = ContextCompat.getColor(requireContext(), R.color.text_primary)
+            legend.textSize = 11f
+        }
+    }
+
+    private fun updatePieChart(distribution: Map<String, Int>) {
+        val entries = ArrayList<PieEntry>()
+        val colors = ArrayList<Int>()
+        val context = requireContext()
+
+        val labels = listOf("Safe", "Low", "Critical", "Out of Stock")
+        val colorRes = listOf(
+            R.color.status_safe,
+            R.color.status_warning,
+            R.color.status_danger,
+            R.color.status_danger
+        )
+
+        for (i in labels.indices) {
+            val label = labels[i]
+            val count = distribution[label] ?: 0
+            if (count > 0) {
+                entries.add(PieEntry(count.toFloat(), label))
+                colors.add(ContextCompat.getColor(context, colorRes[i]))
+            }
+        }
+
+        if (entries.isEmpty()) {
+            binding.cvChartCard.visibility = View.GONE
+            return
+        } else {
+            binding.cvChartCard.visibility = View.VISIBLE
+        }
+
+        val dataSet = PieDataSet(entries, "").apply {
+            setColors(colors)
+            sliceSpace = 2f
+            valueTextSize = 11f
+            valueTextColor = ContextCompat.getColor(context, android.R.color.white)
+        }
+
+        val data = PieData(dataSet).apply {
+            setValueFormatter(PercentFormatter(binding.pieChart))
+            setValueTextSize(11f)
+            setValueTextColor(ContextCompat.getColor(context, android.R.color.white))
+        }
+
+        binding.pieChart.data = data
+        binding.pieChart.invalidate() // Refresh chart view
+    }
+
     private fun observeViewModel() {
         // Set date header immediately
         binding.tvDate.text = DateUtils.todayString()
@@ -76,6 +143,9 @@ class DashboardFragment : Fragment() {
                     binding.tvLowStock.text = state.lowStockCount.toString()
                     binding.tvExpiringSoon.text = state.expiringSoonCount.toString()
                     binding.tvStockValue.text = state.totalStockValueFormatted
+
+                    // Pie Chart
+                    updatePieChart(state.stockStatusDistribution)
 
                     // Urgent Alerts
                     alertsAdapter.submitList(state.urgentAlerts)
