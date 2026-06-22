@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PharmTrack</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_medicines">Medicines</string>
+    <string name="nav_alerts">Alerts</string>
+    <string name="nav_history">History</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">PharmTrack</string>
+    <string name="total_medicines">Total Medicines</string>
+    <string name="low_stock">Low Stock</string>
+    <string name="expiring_soon">Expiring Soon</string>
+    <string name="stock_value">Stock Value</string>
+    <string name="urgent_alerts">Urgent Alerts</string>
+    <string name="recent_activity">Recent Activity</string>
+
+    <!-- Medicine List -->
+    <string name="medicines_title">Medicines</string>
+    <string name="search_hint">Search medicines…</string>
+    <string name="filter_all">All</string>
+    <string name="filter_low_stock">Low Stock</string>
+    <string name="filter_expiring">Expiring Soon</string>
+    <string name="filter_expired">Expired</string>
+    <string name="add_medicine">Add Medicine</string>
+    <string name="no_medicines_title">No medicines yet</string>
+    <string name="no_medicines_desc">Tap + to register your first medicine</string>
+
+    <!-- Add/Edit Medicine -->
+    <string name="add_medicine_title">Add Medicine</string>
+    <string name="edit_medicine_title">Edit Medicine</string>
+    <string name="field_name">Medicine Name *</string>
+    <string name="field_generic_name">Generic / Chemical Name</string>
+    <string name="field_category">Category *</string>
+    <string name="field_manufacturer">Manufacturer</string>
+    <string name="field_unit_type">Unit Type *</string>
+    <string name="field_purchase_price">Purchase Price (PKR)</string>
+    <string name="field_selling_price">Selling Price (PKR)</string>
+    <string name="field_current_stock">Current Stock *</string>
+    <string name="field_reorder_level">Reorder Level *</string>
+    <string name="field_batch_number">Batch Number</string>
+    <string name="field_expiry_date">Expiry Date</string>
+
+    <!-- Alerts -->
+    <string name="alerts_title">Alerts</string>
+    <string name="tab_low_stock">Low Stock</string>
+    <string name="tab_expiring_soon">Expiring Soon</string>
+    <string name="tab_expired">Expired</string>
+    <string name="all_clear">All clear!</string>
+    <string name="no_issues">No issues here.</string>
+
+    <!-- History -->
+    <string name="history_title">History</string>
+    <string name="filter_today">Today</string>
+    <string name="filter_this_week">This Week</string>
+    <string name="filter_this_month">This Month</string>
+    <string name="filter_all_time">All</string>
+
+    <!-- Stock Actions -->
+    <string name="stock_in">Stock IN</string>
+    <string name="stock_out">Stock OUT</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="quantity">Quantity *</string>
+    <string name="notes_optional">Notes (optional)</string>
+    <string name="current_stock_label">Current Stock</string>
+    <string name="new_stock_label">New Stock</string>
+
+    <!-- Errors -->
+    <string name="error_name_required">Medicine name is required</string>
+    <string name="error_stock_required">Current stock is required</string>
+    <string name="error_reorder_required">Reorder level is required</string>
+    <string name="error_insufficient_stock">Insufficient stock</string>
+    <string name="error_valid_quantity">Enter a valid quantity</string>
+    <string name="warn_price_margin">Selling price is lower than purchase price</string>
+    <string name="warn_past_expiry">This medicine may already be expired</string>
+
+    <!-- General -->
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="undo">Undo</string>
+    <string name="medicine_deleted">Medicine deleted</string>
+    <string name="delete_confirm_title">Delete Medicine?</string>
+    <string name="delete_confirm_message">This action cannot be undone.</string>
+    <string name="in_stock">In Stock</string>
+    <string name="out_of_stock">Out of Stock</string>
+    <string name="units">units</string>
+    <string name="pkr">PKR</string>
+</resources>

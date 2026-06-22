@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <!-- ── Tab 1: Dashboard ─────────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.app.pharmtrack.presentation.dashboard.DashboardFragment"
+        android:label="@string/dashboard_title"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/action_dashboard_to_medicineDetail"
+            app:destination="@id/medicineDetailFragment" />
+    </fragment>
+
+    <!-- ── Tab 2: Medicine List ─────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/medicineListFragment"
+        android:name="com.app.pharmtrack.presentation.medicines.list.MedicineListFragment"
+        android:label="@string/medicines_title"
+        tools:layout="@layout/fragment_medicine_list">
+
+        <action
+            android:id="@+id/action_list_to_addMedicine"
+            app:destination="@id/addEditMedicineFragment" />
+
+        <action
+            android:id="@+id/action_list_to_medicineDetail"
+            app:destination="@id/medicineDetailFragment" />
+    </fragment>
+
+    <!-- ── Tab 3: Alerts ────────────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/alertsFragment"
+        android:name="com.app.pharmtrack.presentation.alerts.AlertsFragment"
+        android:label="@string/alerts_title"
+        tools:layout="@layout/fragment_alerts">
+
+        <action
+            android:id="@+id/action_alerts_to_medicineDetail"
+            app:destination="@id/medicineDetailFragment" />
+    </fragment>
+
+    <!-- ── Tab 4: Transaction History ──────────────────────────────────── -->
+    <fragment
+        android:id="@+id/transactionHistoryFragment"
+        android:name="com.app.pharmtrack.presentation.transactions.TransactionHistoryFragment"
+        android:label="@string/history_title"
+        tools:layout="@layout/fragment_transaction_history" />
+
+    <!-- ── Medicine Detail (not a tab) ─────────────────────────────────── -->
+    <fragment
+        android:id="@+id/medicineDetailFragment"
+        android:name="com.app.pharmtrack.presentation.medicines.detail.MedicineDetailFragment"
+        android:label="Medicine Detail"
+        tools:layout="@layout/fragment_medicine_detail">
+
+        <argument
+            android:name="medicineId"
+            app:argType="long" />
+
+        <action
+            android:id="@+id/action_detail_to_editMedicine"
+            app:destination="@id/addEditMedicineFragment">
+            <argument
+                android:name="medicineId"
+                app:argType="long"
+                android:defaultValue="-1L" />
+        </action>
+
+        <action
+            android:id="@+id/action_detail_to_stockBottomSheet"
+            app:destination="@id/stockBottomSheetFragment" />
+    </fragment>
+
+    <!-- ── Add / Edit Medicine (not a tab) ─────────────────────────────── -->
+    <fragment
+        android:id="@+id/addEditMedicineFragment"
+        android:name="com.app.pharmtrack.presentation.medicines.addedit.AddEditMedicineFragment"
+        android:label="Add Medicine"
+        tools:layout="@layout/fragment_add_edit_medicine">
+        <argument
+            android:name="medicineId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
+
+
+    <!-- ── Stock In / Out Bottom Sheet ── -->
+    <dialog
+        android:id="@+id/stockBottomSheetFragment"
+        android:name="com.app.pharmtrack.presentation.transactions.StockBottomSheetFragment"
+        android:label="Stock Movement"
+        tools:layout="@layout/fragment_stock_bottom_sheet">
+        <argument
+            android:name="medicineId"
+            app:argType="long" />
+        <argument
+            android:name="transactionType"
+            app:argType="string" /> <!-- "IN" or "OUT" -->
+    </dialog>
+
+</navigation>
+

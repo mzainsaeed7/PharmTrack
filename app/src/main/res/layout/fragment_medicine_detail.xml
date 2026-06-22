@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- AppBar & Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            app:titleTextColor="@color/on_primary"
+            app:navigationIconTint="@color/on_primary"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:menu="@menu/menu_medicine_detail"
+            tools:title="Panadol Extra 500mg" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Scrollable Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <!-- 1. Header Card (Basic Info) -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:cardBackgroundColor="@color/surface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_detail_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        tools:text="Panadol Extra" />
+
+                    <TextView
+                        android:id="@+id/tv_detail_generic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textSize="14sp"
+                        android:textStyle="italic"
+                        android:textColor="@color/text_secondary"
+                        tools:text="Paracetamol + Caffeine" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider"
+                        android:layout_marginVertical="12dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_detail_category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.Material3.Chip.Assist"
+                            app:chipMinHeight="28dp"
+                            app:chipCornerRadius="8dp"
+                            tools:text="Tablet" />
+
+                        <TextView
+                            android:id="@+id/tv_detail_manufacturer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/text_secondary"
+                            android:textAlignment="viewEnd"
+                            tools:text="GSK Pakistan Ltd." />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 2. Stock Status Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:cardBackgroundColor="@color/surface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Stock Availability"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_secondary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="bottom"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_detail_stock_qty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="36sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            tools:text="140" />
+
+                        <TextView
+                            android:id="@+id/tv_detail_unit_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginBottom="8dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_secondary"
+                            tools:text="units (Per Tablet)" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <!-- Custom Status Chip -->
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_detail_stock_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            style="@style/Widget.Material3.Chip.Suggestion"
+                            app:chipMinHeight="28dp"
+                            app:chipCornerRadius="8dp"
+                            tools:text="In Stock"
+                            tools:textColor="@color/status_safe" />
+
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/pb_stock"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_marginTop="12dp"
+                        android:progressDrawable="@android:drawable/progress_horizontal"
+                        tools:progress="60"
+                        tools:progressTint="@color/status_safe" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_reorder_level"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_secondary"
+                            tools:text="Reorder Level: 20 units" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 3. Financial Info Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:cardBackgroundColor="@color/surface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Financial Details"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_secondary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="12dp"
+                        android:baselineAligned="false">
+
+                        <!-- Purchase Price -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Purchase Price"
+                                android:textSize="12sp"
+                                android:textColor="@color/text_secondary" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_purchase_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary"
+                                tools:text="PKR 4.5" />
+
+                        </LinearLayout>
+
+                        <!-- Selling Price -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Selling Price"
+                                android:textSize="12sp"
+                                android:textColor="@color/text_secondary" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_selling_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary"
+                                tools:text="PKR 6.0" />
+
+                        </LinearLayout>
+
+                        <!-- Profit Margin -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Profit Margin"
+                                android:textSize="12sp"
+                                android:textColor="@color/text_secondary" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_margin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                tools:text="33.3%"
+                                tools:textColor="@color/status_safe" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 4. Batch & Expiry Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:cardBackgroundColor="@color/surface">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Batch &amp; Expiry Info"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_secondary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="12dp">
+
+                        <!-- Batch Number -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Batch Number"
+                                android:textSize="12sp"
+                                android:textColor="@color/text_secondary" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_batch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary"
+                                tools:text="B-77491" />
+
+                        </LinearLayout>
+
+                        <!-- Expiry Date -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Expiry Date"
+                                android:textSize="12sp"
+                                android:textColor="@color/text_secondary" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_expiry"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary"
+                                tools:text="14 Oct 2027" />
+
+                        </LinearLayout>
+
+                        <!-- Expiry Status Badge -->
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_detail_expiry_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            style="@style/Widget.Material3.Chip.Suggestion"
+                            app:chipMinHeight="28dp"
+                            app:chipCornerRadius="8dp"
+                            tools:text="Safe"
+                            tools:textColor="@color/status_safe" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 5. Action Buttons (Stock In / Stock Out) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_stock_in"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:text="Stock IN"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_arrow_upward"
+                    app:iconSize="20dp"
+                    app:cornerRadius="12dp"
+                    android:backgroundTint="@color/status_safe"
+                    android:textColor="@android:color/white" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_stock_out"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:text="Stock OUT"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_arrow_downward"
+                    app:iconSize="20dp"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/status_danger"
+                    app:strokeWidth="1.5dp"
+                    android:textColor="@color/status_danger"
+                    app:iconTint="@color/status_danger" />
+
+            </LinearLayout>
+
+            <!-- 6. Transaction History Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="Recent Movements"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary" />
+
+            <!-- Empty State for Transactions -->
+            <LinearLayout
+                android:id="@+id/ll_empty_transactions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="24dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No stock movements recorded yet"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary" />
+
+            </LinearLayout>
+
+            <!-- Transactions RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_transactions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_transaction" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

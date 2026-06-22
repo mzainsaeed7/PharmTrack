@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Application Theme -->
+    <style name="Theme.PharmTrack" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <item name="colorSecondaryContainer">@color/secondary_container</item>
+        <!-- Background / Surface -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <!-- Text -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <!-- Edge to edge -->
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <!-- Splash Screen Theme -->
+    <style name="Theme.PharmTrack.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.PharmTrack</item>
+    </style>
+
+    <!-- Card style used across all screens -->
+    <style name="PharmTrack.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">1dp</item>
+        <item name="cardBackgroundColor">@color/card_background</item>
+    </style>
+
+    <!-- Stat card — dashboard -->
+    <style name="PharmTrack.StatCard" parent="PharmTrack.Card">
+        <item name="cardElevation">2dp</item>
+    </style>
+</resources>

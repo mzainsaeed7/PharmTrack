@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Colors -->
+    <color name="primary">#1565C0</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="primary_container">#D1E4FF</color>
+    <color name="on_primary_container">#001C3B</color>
+    <color name="secondary">#00838F</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="secondary_container">#B2EBF2</color>
+
+    <!-- Backgrounds -->
+    <color name="background">#F4F6FF</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#E8EAF6</color>
+
+    <!-- Status Colors -->
+    <color name="status_safe">#2E7D32</color>
+    <color name="status_warning">#E65100</color>
+    <color name="status_danger">#B71C1C</color>
+    <color name="status_info">#0277BD</color>
+    <color name="status_safe_bg">#E8F5E9</color>
+    <color name="status_warning_bg">#FFF3E0</color>
+    <color name="status_danger_bg">#FFEBEE</color>
+
+    <!-- Text -->
+    <color name="text_primary">#1A1A2E</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9CA3AF</color>
+
+    <!-- Cards / UI -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="divider">#E5E7EB</color>
+    <color name="chip_in_bg">#E8F5E9</color>
+    <color name="chip_in_text">#1B5E20</color>
+    <color name="chip_out_bg">#FFEBEE</color>
+    <color name="chip_out_text">#B71C1C</color>
+</resources>

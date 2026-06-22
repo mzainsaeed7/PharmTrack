@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/PharmTrack.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- Medicine Name -->
+        <TextView
+            android:id="@+id/tv_medicine_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/chip_stock_status"
+            tools:text="Paracetamol 500mg" />
+
+        <!-- Generic Name -->
+        <TextView
+            android:id="@+id/tv_generic_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_medicine_name"
+            app:layout_constraintEnd_toStartOf="@id/chip_stock_status"
+            tools:text="Acetaminophen" />
+
+        <!-- Category Chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="11sp"
+            app:chipStrokeWidth="1dp"
+            app:chipBackgroundColor="@color/primary_container"
+            app:chipStrokeColor="@color/primary"
+            android:textColor="@color/primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_generic_name"
+            tools:text="Tablet" />
+
+        <!-- Stock Status Chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_stock_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:chipStrokeWidth="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="24 units" />
+
+        <!-- Expiry Date -->
+        <TextView
+            android:id="@+id/tv_expiry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chip_stock_status"
+            tools:text="Exp: Jan 2026" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

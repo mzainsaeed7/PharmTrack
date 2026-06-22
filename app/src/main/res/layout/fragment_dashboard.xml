@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_greeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dashboard_title"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    tools:text="Sunday, 21 Jun 2026" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Stat Cards 2×2 Grid -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginBottom="20dp"
+            android:useDefaultMargins="false">
+
+            <!-- Total Medicines -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/PharmTrack.StatCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_total_medicines"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary"
+                        tools:text="24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_medicines"
+                        android:textSize="13sp"
+                        android:textColor="@color/text_secondary" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Low Stock -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/PharmTrack.StatCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_low_stock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/status_warning"
+                        tools:text="3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/low_stock"
+                        android:textSize="13sp"
+                        android:textColor="@color/text_secondary" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Expiring Soon -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/PharmTrack.StatCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_expiring_soon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/status_warning"
+                        tools:text="2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/expiring_soon"
+                        android:textSize="13sp"
+                        android:textColor="@color/text_secondary" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Stock Value -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/PharmTrack.StatCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_stock_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/secondary"
+                        tools:text="PKR 45,000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_value"
+                        android:textSize="13sp"
+                        android:textColor="@color/text_secondary" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
+
+        <!-- Urgent Alerts -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/urgent_alerts"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_no_alerts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No urgent alerts 🎉"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:padding="16dp"
+            android:gravity="center"
+            android:background="@drawable/bg_bottom_sheet"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_urgent_alerts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_medicine"
+            tools:itemCount="2" />
+
+        <!-- Recent Activity -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recent_activity"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_no_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No recent transactions recorded"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:padding="16dp"
+            android:gravity="center"
+            android:background="@drawable/bg_bottom_sheet"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recent_transactions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_transaction"
+            tools:itemCount="3" />
+
+    </LinearLayout>
+</ScrollView>
+
